@@ -36,7 +36,7 @@ namespace SAT.DATA.EF.MetaData
         [NotNull] public int IsActive { get; set; }
 
     }
-    public class EnrollmentMetaData
+    public partial class EnrollmentMetaData
     {
         [NotNull]
         public int EnrollmentId { get; set; }
@@ -49,7 +49,7 @@ namespace SAT.DATA.EF.MetaData
        
     }
 
-    public class ScheduledClassMetaData
+    public partial class ScheduledClassMetaData
     {
         [NotNull]
         public int ScheduledClassId { get; set; }
@@ -70,7 +70,7 @@ namespace SAT.DATA.EF.MetaData
 
     }
 
-    public class StudentsMetaData
+    public partial class StudentsMetaData
     {
         [NotNull]
         public int StudentId { get; set; }
@@ -101,7 +101,7 @@ namespace SAT.DATA.EF.MetaData
         public int Ssid { get; set; }
     }
 
-    public class StudentStatusMetaData
+    public partial class StudentStatusMetaData
     {
         [NotNull]
         public int Ssid { get; set; }
@@ -112,7 +112,7 @@ namespace SAT.DATA.EF.MetaData
         public string? SSDescription { get; set; }    
     }
 
-    public class ScheduledClassStatusMetaData
+    public partial class ScheduledClassStatusMetaData
     {
         [NotNull]
         public int Scsid { get; set; }
