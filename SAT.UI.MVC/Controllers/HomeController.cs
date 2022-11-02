@@ -18,6 +18,7 @@ namespace SAT.UI.MVC.Controllers
             return View();
         }
 
+
         public IActionResult Privacy()
         {
             return View();
