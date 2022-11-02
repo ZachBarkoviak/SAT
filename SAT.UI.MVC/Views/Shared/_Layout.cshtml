@@ -68,22 +68,28 @@
                             </ul>
                         </li>
                     }
-                    <li class="dropdown">
+                    @if (User.IsInRole("Scheduling"))
+                    {
+                        <li class="dropdown">
                         <a href="#"><span>Scheduling</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a asp-controller="Enrollments" asp-action="Index">Enrollment</a></li>
                                 <li><a asp-controller="Students" asp-action="Index">Students</a></li>
                                 <li><a asp-controller="ScheduledClasses" asp-action="Index">Scheduling</a></li>
                         </ul>
-                    </li>
-                    <li class="dropdown">
+                        </li>
+                    }
+                    @if (User.IsInRole("Student"))
+                    {
+                        <li class="dropdown">
                         <a href="#"><span>Students</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a asp-controller="Enrollments" asp-action="Index">Enrollment</a></li>
                             <li><a asp-controller="Students" asp-action="Index">Students</a></li>
                             <li><a asp-controller="ScheduledClasses" asp-action="Index">Scheduling</a></li>
                         </ul>
-                    </li>
+                        </li>
+                    }
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -109,6 +115,7 @@
 
         </div>
     </header><!-- End Header -->
+    <!-- br's for Controller View formatting-->
     <div class="container">
         <br />
         <br />
