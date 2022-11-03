@@ -6,9 +6,12 @@
 
 <h1>Students</h1>
 
-<p>
-    <a asp-action="Create">Add New Student</a>
-</p>
+@if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+{
+    <p>
+        <a asp-action="Create">Add New Course</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -97,9 +100,12 @@
                 @Html.DisplayFor(modelItem => item.Ss.Ssname)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StudentId">Remove</a>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+                    {
+                        <a asp-action="Details" asp-route-id="@item.StudentId">Details</a><span> | </span>
+                        <a class="text-danger" asp-action="Edit" asp-route-id="@item.StudentId">Edit</a><span> | </span>
+                        <a class="text-danger" asp-action="Delete" asp-route-id="@item.StudentId">Delete</a><span> | </span>
+                    }
             </td>
         </tr>
 }

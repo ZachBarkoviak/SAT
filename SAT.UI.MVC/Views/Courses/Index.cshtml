@@ -6,9 +6,12 @@
 
 <h1>SoR Courses</h1>
 
-<p>
-    <a asp-action="Create">Add New Course</a>
-</p>
+@if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+{
+    <p>
+        <a asp-action="Create">Add New Course</a>
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -55,9 +58,12 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CourseId">Edit Course Details</a> |
                 <a asp-action="Details" asp-route-id="@item.CourseId">Course Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CourseId">Delete Course</a>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+                    {
+                        <a class="text-danger" asp-action="Edit" asp-route-id="@item.CourseId">Edit | </a>
+                        <a class="text-danger" asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
+                    }
             </td>
         </tr>
 }

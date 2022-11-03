@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using SAT.DATA.EF.Models;
 
 namespace SAT.UI.MVC.Controllers
 {
+    
     public class EnrollmentsController : Controller
     {
         private readonly SATContext _context;
@@ -19,6 +22,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments
+        
         public async Task<IActionResult> Index()
         {
             var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student).Include(e => e.ScheduledClass.Course);            
@@ -26,6 +30,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Enrollments == null)
@@ -46,6 +51,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Create
+        [Authorize(Roles = "Admin, Scheduling")]
         public IActionResult Create()
         {
             ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "ScheduledClassId", "ScheduledClassId");
@@ -58,6 +64,7 @@ namespace SAT.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> Create([Bind("EnrollmentId,StudentId,ScheduledClassId,EnrollmentDate")] Enrollment enrollment)
         {
             if (ModelState.IsValid)
@@ -72,6 +79,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Edit/5
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Enrollments == null)
@@ -94,6 +102,7 @@ namespace SAT.UI.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> Edit(int id, [Bind("EnrollmentId,StudentId,ScheduledClassId,EnrollmentDate")] Enrollment enrollment)
         {
             if (id != enrollment.EnrollmentId)
@@ -127,6 +136,7 @@ namespace SAT.UI.MVC.Controllers
         }
 
         // GET: Enrollments/Delete/5
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Enrollments == null)
@@ -149,6 +159,7 @@ namespace SAT.UI.MVC.Controllers
         // POST: Enrollments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Scheduling")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Enrollments == null)
