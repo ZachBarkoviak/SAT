@@ -50,9 +50,9 @@
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
-                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li><a href="@Url.Action("About", "Home")">About</a></li>
-                    <li><a href="@Url.Action("CourseAbout", "Home")">Courses</a></li>
+                    <li><a href="@Url.Action("Index", "Home")" class="@(ViewData["Title"] == "Home Page" ? Html.Raw("active") : Html.Raw(""))" >Home</a></li>
+                    <li><a href="@Url.Action("About", "Home")" class=" @(ViewData["Title"] == "About Page" ? Html.Raw("active") : Html.Raw(""))">About</a></li>
+                    <li><a href="@Url.Action("CourseAbout", "Home")" class="@(ViewData["Title"] == "Course Details" ? Html.Raw("active") : Html.Raw(""))">Courses</a></li>
                     @if(User.IsInRole("Admin"))
                     {
                         <li class="dropdown">
