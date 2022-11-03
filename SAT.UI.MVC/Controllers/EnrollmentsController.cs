@@ -21,7 +21,7 @@ namespace SAT.UI.MVC.Controllers
         // GET: Enrollments
         public async Task<IActionResult> Index()
         {
-            var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student);
+            var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student).Include(e => e.ScheduledClass.Course);            
             return View(await sATContext.ToListAsync());
         }
 
@@ -48,8 +48,8 @@ namespace SAT.UI.MVC.Controllers
         // GET: Enrollments/Create
         public IActionResult Create()
         {
-            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "ScheduledClassId", "InscructorName");
-            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "Email");
+            ViewData["ScheduledClassId"] = new SelectList(_context.ScheduledClasses, "ScheduledClassId", "ScheduledClassId");
+            ViewData["StudentId"] = new SelectList(_context.Students, "StudentId", "StudentId");
             return View();
         }
 

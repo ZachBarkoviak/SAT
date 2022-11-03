@@ -66,7 +66,7 @@ namespace SAT.UI.MVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseDescription", scheduledClass.CourseId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName", scheduledClass.CourseId);
             ViewData["Scsid"] = new SelectList(_context.ScheduledClassStatuses, "Scsid", "Scsname", scheduledClass.Scsid);
             return View(scheduledClass);
         }

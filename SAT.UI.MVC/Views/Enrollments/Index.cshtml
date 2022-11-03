@@ -6,9 +6,12 @@
 
 <h1>Enrollment</h1>
 
-<p>
-    <a asp-action="Create">Add New Student</a>
-</p>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Add New Student</a>
+    </p> 
+}
 <table class="table">
     <thead>
         <tr>
@@ -31,15 +34,18 @@
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ScheduledClass.InscructorName)
+                @Html.DisplayFor(modelItem => item.ScheduledClass.Course.CourseName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.Email)
+                @Html.DisplayFor(modelItem => item.Student.FirstName) @Html.DisplayFor(modelItem => item.Student.LastName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.EnrollmentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.EnrollmentId">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.EnrollmentId">Delete</a>     
+                }
             </td>
         </tr>
 }
