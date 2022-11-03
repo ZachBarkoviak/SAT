@@ -44,18 +44,15 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo me-auto"><a href="index.html">Mentor</a></h1>
+            <h1 class="logo me-auto"><a href="@Url.Action("Index", "Home")">SoR</a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     <li><a class="active" href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                    <li><a href="trainers.html">Trainers</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="@Url.Action("About", "Home")">About</a></li>
+                    <li><a href="@Url.Action("CourseAbout", "Home")">Courses</a></li>
                     @if(User.IsInRole("Admin"))
                     {
                         <li class="dropdown">
@@ -90,19 +87,17 @@
                         </ul>
                         </li>
                     }
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
             @if (signInManager.IsSignedIn(User))
             {
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-                </li>
+      
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                        <button type="submit" class="nav-link get-started-btn">Logout</button>
                     </form>
                 </li>
             }
@@ -149,28 +144,27 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("About", "Home")">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("CourseAbout", "Home")">Courses</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Privacy", "Home")">Privacy policy</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Our Services</h4>
+                        <h4>Our Courses</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("CourseAbout", "Home")">Music Theory 101</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Privacy", "Home")">Applied Music</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Privacy", "Home")">Ensembles</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Privacy", "Home")">Concert</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="@Url.Action("Privacy", "Home")">Orchestra</a></li>
                         </ul>
                     </div>
 
                     <div class="col-lg-4 col-md-6 footer-newsletter">
                         <h4>Join Our Newsletter</h4>
-                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <p>Enter your email to get weekly updates on things happening on campus!</p>
                         <form action="" method="post">
                             <input type="email" name="email"><input type="submit" value="Subscribe">
                         </form>
@@ -222,3 +216,6 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
+
+    @*Abc1234!*@

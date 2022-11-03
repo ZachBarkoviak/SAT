@@ -16,30 +16,36 @@
                 <label asp-for="CourseId" class="control-label"></label>
                 <select asp-for="CourseId" class ="form-control" asp-items="ViewBag.CourseId"></select>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
                 <input asp-for="StartDate" class="form-control" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="EndDate" class="control-label"></label>
                 <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="InscructorName" class="control-label"></label>
                 <input asp-for="InscructorName" class="form-control" />
                 <span asp-validation-for="InscructorName" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Location" class="control-label"></label>
                 <input asp-for="Location" class="form-control" />
                 <span asp-validation-for="Location" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Scsid" class="control-label"></label>
                 <select asp-for="Scsid" class ="form-control" asp-items="ViewBag.Scsid"></select>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
