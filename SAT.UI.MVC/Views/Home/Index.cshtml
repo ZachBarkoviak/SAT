@@ -47,12 +47,12 @@
             <div class="row counters">
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.Students" data-purecounter-duration="1" class="purecounter"></span>
                     <p>Students</p>
                 </div>
 
                 <div class="col-lg-3 col-6 text-center">
-                    <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+                    <span data-purecounter-start="0" data-purecounter-end="@ViewBag.Courses" data-purecounter-duration="1" class="purecounter"></span>
                     <p>Courses</p>
                 </div>
 
@@ -138,7 +138,7 @@
                                 <p class="price">Starting at $126</p>
                             </div>
 
-                            <h3><a href="course-details.html">Course Details</a></h3>
+                            <h3><a asp-action="CourseAbout" asp-controller="Home">Course Details</a></h3>
                             <p>Learn about the courses offered this semester</p>
 
                         </div>

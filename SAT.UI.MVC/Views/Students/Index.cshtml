@@ -9,10 +9,10 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
 {
     <p>
-        <a asp-action="Create">Add New Course</a>
+        <a asp-action="Create">Add New Student</a>
     </p>
 }
-<table class="table">
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
             @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
@@ -30,21 +30,24 @@
             <th>
                 @Html.DisplayNameFor(model => model.Major)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZipCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
+            @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+            {                
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
@@ -75,21 +78,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Major)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZipCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
+            @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
+            {    
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZipCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>

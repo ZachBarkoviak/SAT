@@ -3,7 +3,8 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using SAT.UI.MVC.Models;
 using System.Diagnostics;
-
+using SAT.DATA.EF.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SAT.UI.MVC.Controllers
 {
@@ -11,20 +12,26 @@ namespace SAT.UI.MVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _config;
+        private readonly SATContext _context;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration config)
+        public HomeController(ILogger<HomeController> logger, IConfiguration config, SATContext context)
         {
             _logger = logger;
             _config = config;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+            ViewBag.Students = _context.Students.Count();
+            ViewBag.Courses = _context.Courses.Count();
             return View();
         }
 
         public IActionResult About()
         {
+            ViewBag.Students = _context.Students.Count();
+            ViewBag.Courses = _context.Courses.Count();
             return View();
         }
 

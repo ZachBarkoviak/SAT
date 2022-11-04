@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using SAT.DATA.EF.Models;
 
@@ -15,18 +17,28 @@ namespace SAT.UI.MVC.Controllers
     public class EnrollmentsController : Controller
     {
         private readonly SATContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public EnrollmentsController(SATContext context)
+        public EnrollmentsController(SATContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Enrollments
         
         public async Task<IActionResult> Index()
         {
-            var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student).Include(e => e.ScheduledClass.Course);            
-            return View(await sATContext.ToListAsync());
+            if (User.IsInRole("Student"))
+            {
+                var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student).Include(e => e.ScheduledClass.Course).Where(e => e.Student.Email == User.Identity.Name);
+                return View(await sATContext.ToListAsync());
+            }
+            else 
+            { 
+                var sATContext = _context.Enrollments.Include(e => e.ScheduledClass).Include(e => e.Student).Include(e => e.ScheduledClass.Course);            
+                return View(await sATContext.ToListAsync());
+            }
         }
 
         // GET: Enrollments/Details/5

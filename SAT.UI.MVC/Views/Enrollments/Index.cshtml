@@ -9,10 +9,10 @@
 @if (User.IsInRole("Admin") || User.IsInRole("Scheduling"))
 {
     <p>
-        <a asp-action="Create">Add New Student</a>
+        <a asp-action="Create">Add New Enrollment</a>
     </p> 
 }
-<table class="table">
+<table class="table table-hover table-bordered">
     <thead>
         <tr>
             <th>
